@@ -1,0 +1,50 @@
+def adicionar_aluno(alunos):
+    nome = input("Digite o nome do aluno: ")
+    matricula = input("Digite o número de matrícula: ")
+    if matricula in alunos:
+        print("\nErro: Este número de matrícula já está cadastrado.\n")
+    else:
+        alunos[matricula] = nome
+        print(f"\nAluno '{nome}' adicionado com sucesso!\n")
+
+def remover_aluno(alunos):
+    matricula = input("Digite o número de matrícula do aluno a ser removido: ")
+    if matricula in alunos:
+        nome = alunos.pop(matricula)
+        print(f"\nAluno '{nome}' removido com sucesso!\n")
+    else:
+        print("\nErro: Matrícula não encontrada.\n")
+
+def visualizar_alunos(alunos):
+    if alunos:
+        print("\nLista de alunos registrados:")
+        for matricula, nome in alunos.items():
+            print(f"Matrícula: {matricula} - Nome: {nome}")
+        print()
+    else:
+        print("\nNenhum aluno registrado.\n")
+
+def main():
+    alunos = {}
+    while True:
+        print("Menu de Opções:")
+        print("1. Adicionar aluno")
+        print("2. Remover aluno")
+        print("3. Visualizar todos os alunos")
+        print("4. Sair")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            adicionar_aluno(alunos)
+        elif opcao == "2":
+            remover_aluno(alunos)
+        elif opcao == "3":
+            visualizar_alunos(alunos)
+        elif opcao == "4":
+            print("\nSaindo do programa. Até logo!\n")
+            break
+        else:
+            print("\nOpção inválida. Tente novamente.\n")
+
+if __name__ == "__main__":
+    main()
